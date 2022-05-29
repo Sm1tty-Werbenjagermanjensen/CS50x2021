@@ -1,0 +1,4 @@
+sqlalchemy
+Flask
+Flask-Session
+requests

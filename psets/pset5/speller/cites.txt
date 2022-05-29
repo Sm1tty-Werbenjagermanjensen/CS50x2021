@@ -1,0 +1,12 @@
+list of sites I referenced for ideas:
+
+https://www.geeksforgeeks.org/trie-insert-and-search/
+
+https://www.linuxquestions.org/questions/programming-9/unloading-a-trie-4175495454/
+
+https://cs50.stackexchange.com/questions/24399/how-is-staff-
+
+solution-so-fast-in-load-and-unload
+http://speller-leaderboard.freehostia.com/public/grpInfo
+
+

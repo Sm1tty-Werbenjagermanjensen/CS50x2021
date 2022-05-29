@@ -1,0 +1,220 @@
+body {
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-family: 'Lalezar', cursive;
+}
+
+nav {
+    background-color: #000;
+}
+
+.nav-link {
+    color: white !important;
+    font-size: 1.25rem;
+}
+.nav-link:hover, .active.nav-link {
+    color: yellow !important;
+}
+.logo {
+    width: 2rem;
+    height: 2rem;
+
+}
+
+.brandname {
+    font-size: 1.75rem;
+}
+
+.index-banner {
+    z-index: 1;
+    padding: 0.25rem;
+    background: rgba(0,0,0,0.6) !important; 
+    margin-top: 10rem;
+    font-family: "Roboto", sans-serif;
+}
+.browse {
+    margin: 0.5rem;
+    font-size: 30px;
+    text-decoration-line: underline;
+}
+
+#promo, #promo img {
+    margin-top: 1rem;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#promo {
+    border: 10px solid black;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    font-size: 60px;
+}
+
+.main-heading {
+    margin: 0.5rem;
+    margin-top: 2rem;
+}
+
+.page-heading {
+    margin-top: 4rem;
+    padding: 2rem 0 1rem;
+    background: black;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,0,1) 100%);
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.page-heading h1 { 
+    margin-left: 1.9rem;
+}
+
+.list-inline-item img { 
+    width: 15rem;
+    height: 15rem;
+    border: 5px solid white;
+    border-radius: 2rem;
+    margin-top: 0.5rem;
+    margin: 0.5rem;
+}
+
+.list-inline-item img:hover {
+    border: 10px solid yellow;
+}
+
+a, a:hover {
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.list-inline-item h4 p {
+    font-size: 1px;
+}
+
+.showcases {
+    margin: 1rem;
+}
+
+.product, .info { 
+    margin-top: 8rem;
+    text-align: left;
+}
+/* 992px is consider the minimum width of a large display in bootstrap */
+@media (max-width: 992px) {
+    .info {
+        margin-top: 1rem;
+    }
+}
+
+.product img {
+    width: 100%;
+}
+
+.product img, .cart-item img {
+    border: 0px solid black;
+    border-radius: 1rem;
+}
+
+.info h6 {
+    font-size: 14px;
+}
+
+.dropdown-menu  {
+    background-color: #555555;
+}
+
+.dropdown-item:hover {
+    color: yellow !important;
+    background-color: #131313;
+}
+
+.row, .invalid-item-add {
+    margin-top: 1rem;
+}
+.quantity-change {
+    border: 0;
+    border-radius: 0.2rem;
+}
+.quantity {
+    margin-top: 0.2rem;
+}
+i {
+    color: white !important;
+}
+
+.invalid-item-add {
+    color: red;
+}
+
+.disabled {
+    color: black !important;
+}
+
+.more-items-heading {
+    margin-top: 1rem;
+}
+.badge {
+    margin-left: 0.25rem;
+}
+.card-header {
+    background-color: black;
+}
+.card-header, .list-group-item, #ad {
+    border: 2px solid white;
+}
+
+.remove-from-cart {
+    padding: 0;
+}
+.empty-cart {
+    text-align: center !important;
+}
+.list-group-item {
+    background-color: #131313;
+    text-align: left;
+    padding: 1rem;
+}
+
+.cart-item img {
+    width: 5rem;
+    margin-right: 1rem;
+}
+
+
+.col-0 h3 {
+    color: yellow;
+}
+
+#ad {
+    width: 15rem;
+    height: 10rem;
+    border-radius: 0.25rem;
+    margin: 1rem;
+}
+
+#ad-heading {
+    color: yellow;
+    text-decoration: underline;
+}
+
+#check-out { 
+    width: 15rem;
+}
+
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+footer { 
+    margin-top: 2rem;
+    background-color: #131313;
+}
+
+footer img { 
+    margin: 1rem;
+}

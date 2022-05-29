@@ -1,0 +1,105 @@
+sort1 uses: Bubble Sort
+
+How do you know?: 
+    I first deduced that sort3 was selection sort, leaving sort1 to be decided between Merge and Bubble.
+    
+    Thus, comparing the run time between sort1 & sort2 for either Reversed or Random input makes it evident that
+    sort1 is Bubble sort.
+
+    Reversed input is the least ideal input for a sorting algorithim (i.e is the upperbound)
+    Therefore, the factor of discrepency between the runtimes of sort1 and sort2 should 
+    mirror that of the discrepency in upper bounds of Merge and Bubble sort.
+
+    Comparing the run time of sort1 to sort2 for reversed values,
+    sort1 takes longer than sort2 by approximately:
+        -8x for reversed5000.txt
+        -10x for reversed10000.txt
+        -53x for reversed50000,txt
+
+    Thus, clearly the upperbound of sort1 is greater than sort2
+    Additionally, like with sort3, this growing discrepency in runtime is exponentially growing,
+    which should reflect in the upper bounds of the algorithims.
+
+    Looking to the upper bounds of Merge of Bubble:
+        Bubble: O(n^2)
+        Merge: O(n log(n))
+
+    Since (n^2) > (n log(n)):
+        sort1 must be Bubble sort
+    
+    This also matches the prediction that one algorithims upper bound would be exponentially greater than the other
+    
+    And by simple process of elimination, it can be concluded sort2 is Merge sort.
+
+--------------------------------------------------------------------------------------------------------------------
+Additional enforcing analysis:
+
+    Even though both Bubble and Selection share the same upper bound of n^2
+    
+    Selection sort is known to outperform Bubble sort for non ideal inputs
+
+    This is reflected in the run times of sort1 vs sort3 with reversed and random inputs:
+
+        sort1 takes approximately 2 seconds longer to sort reversed50000.txt than sort3 (5.167s vs 3.46s)
+
+        sort1 also takes approximately 4 seconds longer to sort random50000.txt than sort3 (7.25s vs 3.31)
+--------------------------------------------------------------------------------------------------------------------
+
+sort2 uses: Merge Sort
+
+How do you know?: 
+       After first concluding the algorithim of sort3, then the algorithim of sort1:
+       by process of elimination, Sort2 is Merge sort.
+
+--------------------------------------------------------------------------------------------------------------------
+Additional enforcing analysis:
+    
+    Sort 3 and Sort 1 are significantly slower on non ideal inputs (i.e reversed and random),
+
+    This reflects them both having a significantly greater upper bound
+
+    Which is true of Bubble and Selection sort:
+
+    Bubble: O(n^2)
+    Selection: O(n^2)
+    
+    Merge: O(n log(n))
+
+        n^2 > (n log(n))
+    
+--------------------------------------------------------------------------------------------------------------------
+sort3 uses: selection sort
+
+How do you know?: 
+    When sorting sorted values, this program takes considerably more time to complete than sort1 and sort2. 
+    Sort 1 & 2 are essentially equal in run time for each sorted text file
+    while sorted 3 takes (approximately):
+        - 5x longer for sorted5000.txt
+        - 7x longer for sorted10000.txt
+        - 33x longer for sorted50000.txt
+
+    Given already sorted data is the ideal input for a sorting algorithim (i.e the lower bound).
+    Since sort3 takes such a considerably longer time to complete compared to the other algortihims, 
+    it is safe to conclude that the sort3 algorithim has the largest lower bound of the 3 algorithims.
+    On top of this, it is apparent that the discrepency of sort3's run time compared to the
+    other 3 algorithims grows rather exponentially. This hints at the lowerbound of sort3 being
+    exponentially larger than the other two algorithims.
+
+    Thus, looking to the lower bounds of Selection, Bubble, and Merge:
+        -Selection: Ω(n^2)
+        -Bubble: Ω(n)
+        -Merge: Ω(n log(n))
+
+    From the above analysis, it can be deduced that:
+        Ω (lower bound) of sort3 > Ω of sort1 and sort2 
+
+    The sorting algorithim fitting this description is selection sort.
+    
+        (n^2) > (n) &&  (n^2) >  (n log(n))
+
+    With it also matching the prediction of having it's lower bound be
+    exponentially larger than either of the other two lower bounds.
+
+
+
+// Refer to time-data.gnumeric for my tabulated data

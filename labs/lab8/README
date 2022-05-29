@@ -1,0 +1,18 @@
+This version of lab8 is a fork of my original!
+
+When initially doing this lab I took my solution far beyond the scope of the assignment.
+I am satisfied with that solution, and I learned a lot along the way to its completion.
+
+However, I feel that the original branch of my solution was too personal to publish.
+Thus, I have made this last minute fork where I have replaced all questions, answers, images, etc.
+With placeholders such as "FOO BAR BAZ", stock photos, and Minecraft music/textures. (You can never go wrong with Minecraft)
+
+I fully acknowledge the fact that this makes the site look like some sort of Frankenstein experiment.
+The layout and overall structure of the site had a specific vision in mind, that feels out of place when generalized in this way.
+
+Nonetheless, I feel it is still important to publish this code.
+Since, while the content has been changed, the code remains unaltered.
+Plus, this assignment had no styling requirements anyways.
+So while it may hurt the eyes to look at, it didn't need to please them.
+
+The focus here is solely implementing the trivia question functionality.

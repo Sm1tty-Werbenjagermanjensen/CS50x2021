@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="styles.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Social Credit Quiz!</title>
+    </head> 
+        <body>
+        <audio id="backgroundAudio" autoplay loop>
+            <source src="audio/background.mp3" type="audio/mp3">
+        </audio>
+        <img src="images/base.png" alt="The Rock is sus." class="rock" id="rock">
+        <div class="jumbotron">
+            <div class="mute">
+                <img class="mute" id="mute" src="images/play.png" alt="mute/unmute control">
+            </div>
+            <h1>Social Credit Quiz!</h1>
+        </div>
+        <!-- Multiple Choice (mc): *each question is assumed to have 4 possible answers -->
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2> 
+                <ol>
+                <li>
+                <!-- question 0 -->
+                <h3>When should you play video games?</h3>
+                    <ul>
+                        <li><button type="button" id="a0"> Whenever</button></li>
+                        <li><button type="button" id="a1"> During the week</button></li>
+                        <li><button type="button" id="a2"> One hour a day on weekends</button></li>
+                        <li><button type="button" id="a3"> idk</button></li>
+                    </ul>
+                    <h4 id="mc0"></h4>
+                </li>
+                <!-- question 1 -->
+                <li> 
+                <h3>How many children should one family have?</h3>
+                    <ul>
+                        <li><button type="button" id="a4"> 1</button></li>
+                        <li><button type="button" id="a5"> 5</button></li>
+                        <li><button type="button" id="a6"> 2</button></li>
+                        <li><button type="button" id="a7"> -1</button></li>
+                    </ul>
+                    <h4 id="mc1"></h4>
+                </li>
+                <!-- question 2 -->
+                <li>
+                    <h3>What happened on June 4th, 1989?</h3>
+                    <ul>
+                        <li><button type="button" id="a8"> Something</button></li>
+                        <li><button type="button" id="a9"> Nothing</button></li>
+                        <li><button type="button" id="a10"> A thing</button></li>
+                        <li><button type="button" id="a11"> A grisly and heinous massacre of innocent people by their own government</button></li>
+                    </ul>
+                    <h4 id="mc2"></h4>
+                </li>
+            </div>
+            <div class="section">
+                <h2>Part 2: "Free" Response</h2>
+                <ol>
+                    <li>
+                    <!-- question 0 -->
+                    <h3>Which <strong>country</strong> is the best?</h3>
+                    <div id="fa0">
+                        <input type="text" placeholder="Enter name of country"/>
+                        <button type="button" class="submit">Submit</button>
+                        <h4></h4>
+                    </div>
+                    </li>
+                    <!-- question 1 -->
+                    <li>
+                    <h3>This Chairman of the CCP was responsible for launching The Great Leap Forward.<br>What is this great man's name?</h3>
+                    <img src="images/PRC_Founder.jpg" alt="Founder of PRC" class="fa">
+                    <h5><i><strong>*CCP Disclaimer*</strong>
+                            <br>Give no merit to The Great Chinese Famine and 45 million deaths he allegedly caused. You <em><u>will</u></em> idolize him as a prophet.</i></h5> 
+                        <div id="fa1">
+                            <input type="text" placeholder="Enter name"/>
+                            <button type="button" class="submit">Submit</button>
+                            <h4></h4>
+                    </div>
+                    </li>
+            </div>
+        </div>
+   
+ <script>
+            /* Mute/unmute audio control */
+            const mute = document.getElementById("mute");
+            const music = document.getElementById("backgroundAudio"); 
+            const play = "images/play.png";
+            const pause = "images/pause.png";
+
+            if (music.paused) mute.src = pause; 
+            mute.addEventListener("click", function(){
+                     if (music.paused) {
+                        music.play();
+                        mute.src = play;
+                     }
+                     else { 
+                        music.pause();
+                        mute.src = pause;
+                     }
+            });
+
+
+            /* Declare the rock */
+            const rock = document.getElementById("rock");
+
+
+            /* Check answer for multiple choice (mc) */ 
+            var answers = Array.from(document.querySelectorAll("li > button"));
+            var answersBlacklist = Array(answers.length);
+            const mcKey = ["a2", "a4", "a9"];
+            
+            /* Initialize EventListeners for answer buttons */
+            mcAllEL(true);
+            
+            /* Function executed upon click of an answer button */
+            function mcCheck(e) {
+                    const aButton = e.target; // answer button 
+                    const aN = aButton.attributes.id.value // answer id
+                    const N = parseInt(aN.substr(1)); //answer id number
+                    const mcN = Math.floor(N / 4); // question number
+                    const marking = document.getElementById("mc" +mcN); // HTML heading to display mark 
+               
+                    /* Find first aN value in mcN */
+                    var FaN = mcN * 4;
+                    /* Remove EventListeners from mcN's possible answer buttons and black list them*/
+                    for (var i = 0; i < 4; i++) { 
+                            answers[FaN + i].removeEventListener("click", mcCheck);
+                            answersBlacklist[FaN + i] = true;
+                            if (!((FaN + i) == N)) answers[FaN + i].style.background = "grey";
+                    }
+                    /*  Temporarily remove (if correct, otherwise permanently remove) the rest of the EventListeners */
+                    mcAllEL(false);
+
+                    if (mcKey.includes(aN)) { /* If answer is correct */
+                            grade(marking, true);
+                            aButton.style.background = "#0f0";
+                            correctSounds();
+                            socialCredit(true);
+                            setTimeout(function(){mcAllEL(true);}, 4000); 
+
+                    }
+                    else {  /* If answer is incorrect */
+                            grade(marking, false);
+                            aButton.style.background = "red";
+                            incorrectSounds();
+                            socialCredit(false);
+                    }
+            }
+            
+            /* Add or remove Eventlisteners to/from all unblacklisted answer buttons */ 
+            function mcAllEL(add) {
+                     for (var i = 0; i < answers.length; i++) {
+                              if (!answersBlacklist[i]) {
+                                       if (add) answers[i].addEventListener("click", mcCheck);
+                                       else answers[i].removeEventListener("click", mcCheck);
+                                   }
+                          }
+            }
+
+
+            /* Check answer for free answer (fa) */
+            var submitButtons = document.querySelectorAll("input ~ button");
+            var submitButtonBlacklist = Array(submitButtons.length);
+            
+            const faKey = ["china", "maozedong"];
+            
+            faAllEL(true);
+            
+            function faCheck(e) {
+                    const faN = e.target.parentNode.attributes.id.value; // Question id
+                    const N = parseInt(faN.substr(2, 1)); // Free answer question number
+                    const textBox = e.target.parentNode.firstElementChild; // Input text box element
+                    const marking = e.target.nextElementSibling; // Marking heading
+                    const userAnswer = textBox.value.toLowerCase().replace(/\s+/g, ''); // Parse user input of spaces and force lowercase 
+                    const correctAnswer = faKey[N]; // index correct answer for question
+                    
+                    /* Remove EventListeners from Submit button and blacklist it */
+                    submitButtons[N].removeEventListener("click", faCheck);
+                    submitButtonBlacklist[N] = true;
+                     /*  Temporarily remove (if correct, otherwise permanently remove) the rest of the EventListeners */
+                    faAllEL(false);
+
+                     if (userAnswer == correctAnswer) {
+                            grade(marking, true);
+                            textBox.style.background = "#0f0";
+                            correctSounds();
+                            socialCredit(true);
+                            setTimeout(function(){faAllEL(true);}, 4000);
+                     }
+                     else {
+                            grade(marking, false);
+                            textBox.style.background = "red";
+                            incorrectSounds();
+                            socialCredit(false);
+                     }
+            }
+
+            /* Add or remove EventListeners to/from all unblacklisted submit buttons */
+            function faAllEL(add) {
+                for (var i = 0; i < submitButtons.length; i++) {
+                    if (!submitButtonBlacklist[i]) {
+                             if (add) submitButtons[i].addEventListener("click", faCheck);
+                             else submitButtons[i].removeEventListener("click", faCheck);
+                         }
+                }
+            }
+            
+
+            /* Universal functions (used by both mc and fa) */
+            function grade(marking, correct) {
+                    if (correct) {
+                            marking.innerHTML = "Correct!";
+                            marking.style.color = "green";
+                    }
+                    else {
+                            marking.innerHTML = "Incorrect &#128128";
+                    }
+            }
+            function correctSounds() {
+                    var ding = new Audio("audio/ding.mp3");
+                    var yay = new Audio("audio/yay.mp3");
+                    ding.play();
+                    yay.play();
+            }
+            function incorrectSounds() {
+                    document.body.removeChild(music);
+                    var boom = new Audio("audio/boom.mp3");
+                    var bruh = new Audio("audio/bruh.mp3");
+                    var stupid = new Audio("audio/stupid.mp3");
+                    var awkward = new Audio("audio/awkward.mp3");
+                    var siren = new Audio("audio/siren.mp3");
+                    awkward.play();
+                    boom.play();
+                    stupid.play();
+                    bruh.loop = true;
+                    bruh.play();
+                    siren.loop = true;
+                    siren.play();
+                
+            }
+            function socialCredit(correct) {
+                    /* Set social credit influx image */
+                     var src = "images/increase.jpg"; 
+                    if (!correct) src = "images/decrease.jpg";
+                    var sc = document.createElement("img");
+                    sc.src = src;
+                    sc.width = screen.width;
+                    sc.height = screen.height;
+                    sc.alt = "Social Credit Influx";
+                    sc.setAttribute("class", "socialcredit");
+                    
+                    /* If answer was correct, add rock back and remove image after timeout. */
+                    if (correct) { 
+                             rock.src = "images/aproved.gif";
+                             setTimeout(function(){
+                                    document.body.appendChild(sc);
+                                    document.body.removeChild(rock);}, 1500);
+                            setTimeout(function(){
+                                    document.body.removeChild(sc); 
+                                    document.body.appendChild(rock); 
+                                    rock.src = "images/base.png";}, 4000);
+                     }
+                     else {
+                            rock.src = "images/suswok.gif";
+                            setTimeout(function(){
+                            document.body.appendChild(sc);
+                            document.body.removeChild(rock);
+                            executionAlert();    
+                            }, 1500);
+                     }
+            }
+            
+            function executionAlert() {
+                    const d = new Date();
+                    d.setDate(d.getDate() + 1);
+                    alert("YOUR SOCIAL CREDIT SCORE IS TOO LOW.\n\nYOUR EXECUTION DATE IS SCHEDULED FOR:\n" +d);
+            }
+        </script>
+        </body>
+</html>

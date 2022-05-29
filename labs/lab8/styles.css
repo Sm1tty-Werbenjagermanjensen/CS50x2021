@@ -1,0 +1,155 @@
+body {
+    background-color: #a81f0c;
+    font-family: "Brush Script MT", cursive;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+.rock {
+      position: fixed;
+      width: 20%;
+      top: 25rem;
+      right: 1rem;
+      z-index: 1;
+      }
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.jumbotron {
+    background-image: url("images/flag.jpg");
+    color: #fff;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    outline-style: outset; 
+}
+
+.mute {
+   text-align: left;
+   margin: 0;
+}
+
+img.mute {
+    width: 3%;
+}
+
+button.mute:hover {
+    background-color: white;
+}
+
+.section {
+    padding: 0.5rem 2rem 1rem 2rem;
+    outline-style: outset;
+
+}
+
+.section:hover {
+    background-color: #af0000;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+img.fa {
+    width: 10%;
+}
+
+h1 {
+    font-size: 1100%;
+    color: black;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+}
+
+h2 {
+    font-size: 75px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+h3, ol {
+    font-size: 35px;
+}
+
+h4 {
+   font-size: 35px;
+   font-weight: bold;
+   color: black;
+   -webkit-text-stroke-color: white;
+   z-index: 2;
+}
+h5 {
+   font-size: 20px;
+   border: solid white 1px;
+   width: fit-content;
+   padding: 0.5rem;
+}
+
+ul {
+    list-style: upper-alpha;
+    font-size: 25px;
+}
+
+button { 
+    font-family: "Brush Script MT", cursive;
+    font-size: 25px;
+    padding: 1rem 1rem;
+    margin: 1rem;
+    border: 3px outset black;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #f1d100;
+}
+
+input {
+    color: black;
+    background-color: white;
+    font-family: "Brush Script MT", cursive;
+    font-size: 25px;
+}
+
+button.submit {
+    border: 1px solid;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    line-height: 1.7;
+    margin: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    vertical-align: middle;
+}
+
+
+input[type="text"] {
+    line-height: 2;
+    width: 25%;
+    background-color: white;
+    color: black;
+}
+
+input[type="text"]:hover {
+    background-color: #f1d100;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+input::placeholder {
+    color: black;
+}
+
+.socialcredit {
+    position: fixed;
+    top: 0;
+    z-index: 0;
+
+}
